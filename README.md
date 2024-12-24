@@ -50,7 +50,7 @@
 ## 🚀 **Screenshots**
 
 ### Home Page  
-![Home Page](images/home_page.png)  
+![Home Page](/public/images/home_page.png)  
 ![Home Page](images/Explore_page.png)  
 
 
