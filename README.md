@@ -51,19 +51,19 @@
 
 ### Home Page  
 ![Home Page](/public/images/home_page.png)  
-![Home Page](images/Explore_page.png)  
+![Home Page](/public/images/Explore_page.png)  
 
 
 ### Login Page  
-![Login Page](images/signin_page.png)  
+![Login Page](/public/images/signin_page.png)  
 
 ### Information Page  
-![Information Page](images/information_page.png) 
-![Information Page](images/information_page2.png) 
+![Information Page](/public/images/information_page.png) 
+![Information Page](/public/images/information_page2.png) 
 
 
 ### Add Places Page  
-![Add Places Page](images/addplace_page.png)  
+![Add Places Page](/public/images/addplace_page.png)  
 
 ---
 
