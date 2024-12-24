@@ -50,21 +50,43 @@
 ## 🚀 **Screenshots**
 
 ### Home Page  
-![Home Page](images/homepage.png)  
+![Home Page](images/home_page.png)  
+![Home Page](images/Explore_page.png)  
+
 
 ### Login Page  
-![Login Page](images/loginpage.png)  
+![Login Page](images/signin_page.png)  
 
 ### Information Page  
-![Information Page](images/informationpage.png)  
+![Information Page](images/information_page.png) 
+![Information Page](images/information_page2.png) 
+
 
 ### Add Places Page  
-![Add Places Page](images/addplacespage.png)  
+![Add Places Page](images/addplace_page.png)  
 
 ---
 
-## ⚙️ **Setup Instructions**
 
-1. **Clone the Repository**  
-   ```bash
-   git clone https://github.com/YourUsername/Wanderplaces.git
+Install Dependencies :
+
+npm install
+
+Set Up Database :
+
+Create a MongoDB Database.
+
+MONGO_URI = your-mongodb-connection-string
+
+Add Data to the Database :
+
+Use tools like MongoDB Compass or Postman to insert sample data into your database.
+You can also manually add data using the Add Places Page in the website.
+
+Run the Server :
+
+npm start
+
+Open your browser and visit:
+
+http://localhost:8080
