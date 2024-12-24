@@ -1,0 +1,149 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row">
+  <div class="card col-6 offset-3 show-card listing-card">
+    <h4 class="mt-4"><b><%= listing.title %></b></h4>
+    <img
+      src="<%= listing.image %>"
+      class="card-img-top show-img"
+      alt="listing-image"
+    />
+    <div class="card-body">
+      <p class="card-text">
+        Details by <i><b><%= listing.owner.username %></b></i>
+      </p>
+      <p class="card-text"><%= listing.description %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        &#8377;<%= listing.price.toLocaleString("en-IN") %> - <%= listing.days
+        %> Days / <%= listing.nights %> Nights
+      </li>
+      <li class="list-group-item">
+        <i class="fa-solid fa-location-dot"></i> &nbsp;&nbsp;<%=
+        listing.location %>, <%= listing.country %>
+      </li>
+      <li class="list-group-item"><%= listing.country %></li>
+    </ul>
+  </div>
+
+  <% if(crrUser && crrUser._id.equals(listing.owner._id)) { %>
+  <div class="btns mb-4">
+    <a
+      href="/listings/<%= listing._id %>/edit"
+      class="card-link btn btn-dark offset-3"
+      >EDIT</a
+    >
+    <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+      <button class="card-link btn btn-dark offset-4">
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
+    </form>
+  </div>
+  <% } %>
+  <div class="col-6 offset-3 mb-3">
+    <% if(crrUser) { %>
+    <hr />
+    <h4><b>Leave A Review</b></h4>
+    <form
+      action="/listings/<%= listing._id %>/reviews"
+      method="POST"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="rating mb-3 mt-3">
+        <label for="rating" class="form-label">Rating </label>
+        <fieldset class="starability-grow">
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="review[rating]"
+            value="1"
+            checked
+            aria-label="No rating."
+          />
+          <input
+            type="radio"
+            id="first-rate1"
+            name="review[rating]"
+            value="1"
+          />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input
+            type="radio"
+            id="first-rate2"
+            name="review[rating]"
+            value="2"
+          />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input
+            type="radio"
+            id="first-rate3"
+            name="review[rating]"
+            value="3"
+          />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input
+            type="radio"
+            id="first-rate4"
+            name="review[rating]"
+            value="4"
+          />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input
+            type="radio"
+            id="first-rate5"
+            name="review[rating]"
+            value="5"
+          />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+      </div>
+      <div class="review mb-3 mt-3">
+        <label for="review" class="form-label">Comment </label>
+        <textarea
+          name="review[comment]"
+          rows="5"
+          class="form-control"
+          placeholder="Add a comment.."
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please Add Comment..</div>
+      </div>
+
+      <button class="btn btn-dark">Submit</button>
+    </form>
+    <% } %> <% if(listing.reviews.length > 0) {%>
+
+    <hr />
+    <div class="row">
+      <p class="mt-3 mb-3"><b>All Reviews</b></p>
+      <% for(review of listing.reviews){ %>
+      <div class="card mb-3 show-reviews">
+        <div class="card-body">
+          <p class="card-title"><b>@<%= review.author.username %></b></p>
+          <p class="card-text"><%= review.comment %></p>
+          <p class="card-text">
+            <% for (let i=1 ; i<=review.rating ; i++) { %>
+            <i class="fa-solid fa-star"></i>
+            <% } %>
+          </p>
+        </div>
+        <% if(crrUser && crrUser._id.equals(listing.owner._id)) { %>
+
+        <form
+          action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-dark mb-3">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </form>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+  </div>
+</div>
